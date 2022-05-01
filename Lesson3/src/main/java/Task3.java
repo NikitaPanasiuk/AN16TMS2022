@@ -6,7 +6,7 @@ public class Task3 {
         System.out.print("Input a number of array elements: ");
         int i = in.nextInt();
         double[] num = new double[i];
-        double min = -1;
+        double min = Integer.MAX_VALUE;
         for (i = 0; i < num.length; i++) {
             System.out.println("Input a random number");
             num[i] = in.nextDouble();
