@@ -1,4 +1,5 @@
 public class Task4 {
+    //задача на вывод целого количество часов из рандомного числа
     public static void main(String[] args) {
         int n=((int)(Math.random()*28801));
         int x= (int) Math.floor((double)n/3600);
