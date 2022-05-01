@@ -7,13 +7,15 @@ public class Task5 {
         int i = in.nextInt();
         double[] num = new double[i];
         System.out.println("Input a random number");
-        double max = Math.abs(num[0]);
+        double min = Math.abs(num[0]);
         for (i = 0; i < num.length; i++) {
             num[i] = in.nextDouble();
-            if (Math.abs(num[i]) > max) {
-                max = Math.abs(num[i]);
+            double module = Math.abs(num[i]);
+            if (min > module) {
+                min = module;
             }
         }
-        System.out.println("Module max number is " + max);
+        System.out.println("Module min number is " + min);
     }
+
 }
