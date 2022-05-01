@@ -1,8 +1,16 @@
 public class Task4 {
     public static void main(String[] args) {
         int n=((int)(Math.random()*28801));
-        int x= (int) Math.floor((double)n/60);
-        System.out.println("Док конца рабочего дня осталось "+n+" секунд");
-        System.out.println("Док конца рабочего дня осталось "+x+" часов");
+        int x= (int) Math.floor((double)n/3600);
+        if (n>1) {
+            System.out.println(n + " seconds left until the end of the working day");
+        } else {
+            System.out.println( n + " second left until the end of the working day");
+        }
+        if (n>1) {
+            System.out.println( x + " hours left until the end of the working day");
+        } else {
+            System.out.println(x + " hour left until the end of the working day");
+        }
     }
 }
