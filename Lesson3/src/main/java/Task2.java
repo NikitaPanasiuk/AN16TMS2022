@@ -4,28 +4,28 @@ import java.util.Scanner;
 public class Task2 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.print("Input a number of elements: ");
-        if (in.hasNextInt()) {
-            int i = in.nextInt();
-            //int num;
-            System.out.println("Input a random whole number");
-            for (int z = 0; z < i; z++) {
-                in.nextLine();
-                if (in.hasNextInt()) {
-                    int num = in.nextInt();
-                    if ((num % 2) == 0) {
-                        System.out.print("This number is even " + num);
-                    } else {
-                        System.out.print("This number is non-even " + num);
-                    }
+        int x;
+        do {
+            System.out.println("To stop program input 0, to continue input another number");
+            x = in.nextInt();
+            System.out.print("Input a random whole number ");
+            in.nextLine();
+            if (in.hasNextInt()) {
+                int num = in.nextInt();
+                if ((num % 2) == 0) {
+                    System.out.print("This number is even " + num);
                 } else {
-                    System.out.println("You input non-whole number, try again");
-                    z--;
+                    System.out.print("This number is non-even " + num);
                 }
+            } else {
+                System.out.println("You input non-whole number or symbol, try again");
+                in.nextLine();
+                in.nextLine();
             }
-        } else {
-            System.out.print("You put wrong number or symbol");
-        }
+        } while (x != 0);
     }
 }
+
+
+
 
