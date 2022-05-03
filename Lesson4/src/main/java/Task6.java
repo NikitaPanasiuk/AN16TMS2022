@@ -1,4 +1,3 @@
-import org.w3c.dom.ls.LSOutput;
 
 import java.util.Scanner;
 
@@ -29,7 +28,7 @@ public class Task6 {
 
     public static int operation(int number) {
         if (number > 0) {
-            return (number = number + 1);
+            return number = number + 1;
         } else {
             if (number < 0) {
                 return number = number - 2;

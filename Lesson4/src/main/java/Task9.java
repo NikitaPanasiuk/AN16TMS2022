@@ -14,7 +14,6 @@ public class Task9 {
             System.out.println("enter an upper bound for the search for primes");
             if (in.hasNextInt()) {
                 int n = in.nextInt();
-                n++;
                 printPrimeNumbers(n);
             } else {
                 System.out.println("You input non-whole number or symbol, try again");
@@ -31,14 +30,14 @@ public class Task9 {
 
         for (int i = 0; i < number; i++) {
             int q = 1;
-            int z=0;
+            int z = 0;
             while (q <= mass[i]) {
                 if (mass[i] % q == 0) {
                     z++;
                 }
                 q = q + 1;
             }
-            if (z==2) {
+            if (z == 2) {
                 System.out.println(mass[i]);
             }
         }

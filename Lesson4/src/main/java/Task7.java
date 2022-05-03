@@ -30,7 +30,7 @@ public class Task7 {
     public static int calculateCountOfOddElementsInMatrix(int[] ints) {
         int z = 0;
         for (int i = 0; i < ints.length; i++) {
-            if (i % 2 == 0) {
+            if (i % 2 != 0) {
                 z = z + 1;
             }
         }

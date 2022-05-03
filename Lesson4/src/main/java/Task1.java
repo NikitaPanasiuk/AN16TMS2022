@@ -11,8 +11,7 @@ public class Task1 {
             case 3 -> System.out.println("среда");
             case 4 -> System.out.println("четверг");
             case 5 -> System.out.println("пятница");
-            case 6 -> System.out.println("суббота");
-            case 7 -> System.out.println("воскресенье");
+            case 6, 7 -> System.out.println("выходной");
         }
     }
 
