@@ -18,14 +18,16 @@ public class Task3 {
                 String length = "" + n;
                 if (n > 0) {
                     System.out.println("The " + n + " number is positive");
+                    System.out.println("The number of digits in a number " + length.length());
                 } else {
                     if (n < 0) {
                         System.out.println("The " + n + " number is negative");
+                        System.out.println("The number of digits in a number " + (length.length() - 1));
                     } else {
                         System.out.println("The " + n + " number is non-negative and non-positive");
                     }
                 }
-                System.out.println("The number of digits in a number " + length.length());
+
 
             } else {
                 System.out.println("You input non-whole number or symbol, try again");
