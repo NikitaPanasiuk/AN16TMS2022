@@ -13,8 +13,7 @@ public class Task6 {
                 countDevs(n);
             } else {
                 System.out.println("Вы ввели нецелое число или символ, попробуйте снова");
-                in.nextLine();
-                in.nextLine();
+                in.next();
             }
         } while (x != 0);
     }
@@ -22,25 +21,22 @@ public class Task6 {
     public static void countDevs(int count) {
         int z = count % 10;
         int x = count % 100;
-        if (z == 0) {
+        if (x >= 11 && x <= 20) {
             System.out.println(count + " програмистов");
         } else {
-            if (x >= 11 && x <= 20) {
-                System.out.println(count + " програмистов");
+            if (z == 1) {
+                System.out.println(count + " програмист");
             } else {
-                if (z == 1) {
-                    System.out.println(count + " програмист");
+                if (z >= 2 && z <= 4) {
+                    System.out.println(count + " програмиста");
                 } else {
-                    if (z >= 2 && z <= 4) {
-                        System.out.println(count + " програмиста");
-                    } else {
-                        System.out.println(count + " програмистов");
-                    }
+                    System.out.println(count + " програмистов");
                 }
             }
         }
     }
 }
+
 
 
 

@@ -9,7 +9,6 @@ public class Task2 {
             System.out.println("To stop program input 0, to continue input another number");
             x = in.nextInt();
             System.out.print("Input a random whole number ");
-            in.nextLine();
             if (in.hasNextInt()) {
                 int num = in.nextInt();
                 if ((num % 2) == 0) {
@@ -19,8 +18,7 @@ public class Task2 {
                 }
             } else {
                 System.out.println("You input non-whole number or symbol, try again");
-                in.nextLine();
-                in.nextLine();
+                in.next();
             }
         } while (x != 0);
     }
