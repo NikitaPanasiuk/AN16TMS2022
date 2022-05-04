@@ -32,7 +32,7 @@ public class Task5 {
     private static void printArray(int num) {
         int[] mass = new int[num];
         for (int i = 0; i < num; i++) {
-            mass[i] = Integer.MIN_VALUE + (int) (Math.random() * Integer.MAX_VALUE);
+            mass[i] = (-1) + (int) (Math.random() * Integer.MAX_VALUE);
             System.out.println(mass[i]);
         }
     }

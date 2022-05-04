@@ -49,7 +49,12 @@ public class Task4 {
                                         if (d >= 1 && d <= 20) {
                                             System.out.println("your zodiac sign is Aries");
                                         } else {
-                                            System.out.println("your zodiac sign is Taurus");
+                                            if (d < 31) {
+                                                System.out.println("your zodiac sign is Taurus");
+
+                                            } else {
+                                                System.out.println("You input wrong date!");
+                                            }
                                         }
                                         break;
                                     case 5:
@@ -63,7 +68,11 @@ public class Task4 {
                                         if (d >= 1 && d <= 21) {
                                             System.out.println("your zodiac sign is Gemini");
                                         } else {
-                                            System.out.println("your zodiac sign is Cancer");
+                                            if (d < 31) {
+                                                System.out.println("your zodiac sign is Cancer");
+                                            } else {
+                                                System.out.println("You input wrong date!");
+                                            }
                                         }
                                         break;
                                     case 7:
@@ -84,7 +93,11 @@ public class Task4 {
                                         if (d >= 1 && d <= 23) {
                                             System.out.println("your zodiac sign is Virgo");
                                         } else {
-                                            System.out.println("your zodiac sign is Libra");
+                                            if (d < 31) {
+                                                System.out.println("your zodiac sign is Libra");
+                                            } else {
+                                                System.out.println("You input wrong date!");
+                                            }
                                         }
                                         break;
                                     case 10:
@@ -98,7 +111,11 @@ public class Task4 {
                                         if (d >= 1 && d <= 23) {
                                             System.out.println("your zodiac sign is Scorpio");
                                         } else {
-                                            System.out.println("your zodiac sign is Sagittarius");
+                                            if (d < 31) {
+                                                System.out.println("your zodiac sign is Sagittarius");
+                                            } else {
+                                                System.out.println("You input wrong date!");
+                                            }
                                         }
                                         break;
                                     case 12:
@@ -112,7 +129,7 @@ public class Task4 {
                             }
                         }
                     }
-                }else {
+                } else {
                     System.out.println("You input non-whole number or symbol, try again");
                     in.next();
                 }
