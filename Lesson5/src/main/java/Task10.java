@@ -35,12 +35,10 @@ public class Task10 {
             for (int j = 0; j < x; j++) {
                 if (matrix[i][j] % 3 == 0) {
                     matrix1[i][j] = '+';
+                } else if (matrix[i][j] % 7 == 0) {
+                    matrix1[i][j] = '-';
                 } else {
-                    if (matrix[i][j] % 7 == 0) {
-                        matrix1[i][j] = '-';
-                    } else {
-                        matrix1[i][j] = '*';
-                    }
+                    matrix1[i][j] = '*';
                 }
                 System.out.print(matrix1[i][j] + " ");
             }
