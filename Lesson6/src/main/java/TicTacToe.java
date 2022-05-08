@@ -9,48 +9,16 @@ public class TicTacToe extends JComponent {
     int[][] field;
     boolean isXturn;
 
-    public TicTacToe() {
-        enableEvents(AWTEvent.MOUSE_EVENT_MASK);
-        field = new int[3][3];
-        initGame();
-    }
-
-    public void initGame() {
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field.length; j++) {
-                field[i][j] = FILED_EMPTY;
-                System.out.print(field[i][j] + " ");
-            }
-            System.out.println();
+    void drawGrid(Graphics graphics) {
+        int w = getWidth();
+        int h = getHeight();
+        int dw = w / 3;
+        int dh = h / 3;
+        getGraphics().setColor(Color.BLACK);
+        for (int i = 1; i < 3; i++) {
+            graphics.drawLine(0, dh * i, w, dh * i);
+            graphics.drawLine(dw * i, 0, dw * i, h);
         }
-        isXturn = true;
-    }
-
-    public void processMouseEvent(MouseEvent mouseEvent) {
-        super.processMouseEvent(mouseEvent);
-        if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
-            int x = mouseEvent.getX();
-            int y = mouseEvent.getY();
-            int i = (int) ((float) x / getWidth() * 3);
-            int j = (int) ((float) y / getHeight() * 3);
-            if (field[i][j] == FILED_EMPTY) {
-                field[i][j] = isXturn ? FILED_X : FILED_0;
-                isXturn = !isXturn;
-                repaint();
-                int res = checkState();
-                if (res != 0) {
-                    if (res == FILED_0 * 3) {
-                        JOptionPane.showMessageDialog(this, "Zeroes win!", "Winner, Winner Chicken Diner!", JOptionPane.INFORMATION_MESSAGE);
-                    } else if (res == FILED_X * 3) {
-                        JOptionPane.showMessageDialog(this, "Crosses win!", "Winner, Winner Chicken Diner!", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(this, "No winner", "No Diner", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                }
-            }
-        }
-        initGame();
-        repaint();
     }
 
     void drawX(int i, int j, Graphics graphics) {
@@ -84,6 +52,58 @@ public class TicTacToe extends JComponent {
         }
     }
 
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+        graphics.clearRect(0, 0, getWidth(), getHeight());
+        drawGrid(graphics);
+        drawX0(graphics);
+    }
+
+    public TicTacToe() {
+        enableEvents(AWTEvent.MOUSE_EVENT_MASK);
+        field = new int[3][3];
+        initGame();
+    }
+
+    public void initGame() {
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field.length; j++) {
+                field[i][j] = FILED_EMPTY;
+            }
+            System.out.println();
+        }
+        isXturn = true;
+    }
+
+
+    public void processMouseEvent(MouseEvent mouseEvent) {
+        super.processMouseEvent(mouseEvent);
+        if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
+            int x = mouseEvent.getX();
+            int y = mouseEvent.getY();
+            int i = (int) ((float) x / getWidth() * 3);
+            int j = (int) ((float) y / getHeight() * 3);
+            if (field[i][j] == FILED_EMPTY) {
+                field[i][j] = isXturn ? FILED_X : FILED_0;
+                isXturn = !isXturn;
+                repaint();
+                int res = checkState();
+                if (res != 0) {
+                    if (res == FILED_0 * 3) {
+                        JOptionPane.showMessageDialog(this, "Zeroes win!", "Winner, Winner Chicken Diner!", JOptionPane.INFORMATION_MESSAGE);
+                    } else if (res == FILED_X * 3) {
+                        JOptionPane.showMessageDialog(this, "Crosses win!", "Winner, Winner Chicken Diner!", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No winner", "No Diner", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }
+        }
+        initGame();
+        repaint();
+    }
+
+
     int checkState() {
         int diag1 = 0;
         int diag2 = 0;
@@ -103,11 +123,12 @@ public class TicTacToe extends JComponent {
             chek_i = 0;
             chek_j = 0;
             for (int j = 0; j < field.length; j++) {
-                if (field[i][j] == 0) {
+                if (field[i][j] == FILED_EMPTY) {
                     hasEmpty = true;
+                } else {
+                    chek_i += field[i][i];
+                    chek_j += field[j][i];
                 }
-                chek_i += field[i][i];
-                chek_j += field[j][i];
             }
             if (chek_i == FILED_0 * 3 || chek_i == FILED_X * 3) {
                 return chek_i;
@@ -123,22 +144,6 @@ public class TicTacToe extends JComponent {
         }
     }
 
-    protected void paintComponent(Graphics graphics) {
-        super.paintComponent(graphics);
-        graphics.clearRect(0, 0, getWidth(), getHeight());
-        drawGrid(graphics);
-        drawX0(graphics);
-    }
 
-    void drawGrid(Graphics graphics) {
-        int w = getWidth();
-        int h = getHeight();
-        int dw = w / 3;
-        int dh = h / 3;
-        getGraphics().setColor(Color.BLACK);
-        for (int i = 1; i < 3; i++) {
-            graphics.drawLine(0, dh * i, w, dh * i);
-            graphics.drawLine(dw * i, 0, dw * i, h);
-        }
-    }
 }
+
