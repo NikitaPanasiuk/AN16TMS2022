@@ -6,7 +6,7 @@ import java.awt.*;
 //    Они по очереди вводят координаты клетки в которую хотят сделать ход.
 //    После каждого хода, в консоли отрисовывается игровое поле с текущим состоянием.
 //    Игра продолжается до победы одного из игроков или ничьи.
-public class Task7 {
+public class Task6 {
     public static void main(String[] args) {
         System.out.println("Start game...");
         JFrame window = new JFrame("TicTacToe");//создаем окно

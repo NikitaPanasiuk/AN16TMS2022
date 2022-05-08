@@ -8,10 +8,8 @@ public class Task4 {
         System.out.println("input number of string");
         int num = in.nextInt();
         BigInteger[][] string = new BigInteger[num][num];
-        for (int n = 0; n < num; n++) {
-            for (int k = 0; k < num; k++) {
-                string[n][k] = getFactorial(n).divide((getFactorial(k).multiply(getFactorial((n - k)))));
-            }
+        for (int k = 0; k < num; k++) {
+            string[num - 1][k] = getFactorial(num - 1).divide((getFactorial(k).multiply(getFactorial(((num - 1) - k)))));
         }
         for (int j = 0; j < num; j++) {
             System.out.print(string[num - 1][j] + " ");
