@@ -25,8 +25,8 @@ public class TicTacToe extends JComponent {
         graphics.setColor(Color.RED);
         int dw = getWidth() / 3;
         int dh = getHeight() / 3;
-        int x = i * dw;
-        int y = j * dh;
+        int x = j * dw;
+        int y = i * dh;
         graphics.drawLine(x, y, x + dw, y + dh);
         graphics.drawLine(x, y + dh, x + dw, y);
     }
@@ -35,9 +35,9 @@ public class TicTacToe extends JComponent {
         graphics.setColor(Color.RED);
         int dw = getWidth() / 3;
         int dh = getHeight() / 3;
-        int x = i * dw;
-        int y = j * dh;
-        graphics.drawOval(x + 5 * dw * dw / 100, y, dw * 9 / 10, dh);
+        int x = j * dw;
+        int y = i * dh;
+        graphics.drawOval(x + 5, y + 3, 115, 115);
     }
 
     void drawX0(Graphics graphics) {
@@ -81,8 +81,8 @@ public class TicTacToe extends JComponent {
         if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
             int x = mouseEvent.getX();
             int y = mouseEvent.getY();
-            int i = (int) ((float) x / getWidth() * 3);
-            int j = (int) ((float) y / getHeight() * 3);
+            int j = (int) ((float) x / getWidth() * 3);
+            int i = (int) ((float) y / getHeight() * 3);
             if (field[i][j] == FILED_EMPTY) {
                 field[i][j] = isXturn ? FILED_X : FILED_0;
                 isXturn = !isXturn;
@@ -96,25 +96,24 @@ public class TicTacToe extends JComponent {
                     } else {
                         JOptionPane.showMessageDialog(this, "No winner", "No Diner", JOptionPane.INFORMATION_MESSAGE);
                     }
+                    initGame();
+                    repaint();
                 }
             }
         }
-        initGame();
-        repaint();
     }
 
 
     int checkState() {
-        int diag1 = 0;
+        int diag = 0;
         int diag2 = 0;
         for (int i = 0; i < field.length; i++) {
-            diag1 += field[i][i];
+            diag += field[i][i];
             diag2 += field[i][2 - i];
         }
-        if (diag1 == FILED_0 * 3 || diag1 == FILED_X * 3) {
-            return diag1;
-        }
-        if (diag2 == FILED_0 * 3 || diag2 == FILED_X * 3) {
+        if (diag == FILED_0 * 3 || diag == FILED_X * 3) {
+            return diag;
+        } else if (diag2 == FILED_0 * 3 || diag2 == FILED_X * 3) {
             return diag2;
         }
         int chek_i, chek_j;
@@ -125,15 +124,13 @@ public class TicTacToe extends JComponent {
             for (int j = 0; j < field.length; j++) {
                 if (field[i][j] == FILED_EMPTY) {
                     hasEmpty = true;
-                } else {
-                    chek_i += field[i][i];
-                    chek_j += field[j][i];
                 }
+                chek_i += field[i][j];
+                chek_j += field[j][i];
             }
             if (chek_i == FILED_0 * 3 || chek_i == FILED_X * 3) {
                 return chek_i;
-            }
-            if (chek_j == FILED_0 * 3 || chek_j == FILED_X * 3) {
+            } else if (chek_j == FILED_0 * 3 || chek_j == FILED_X * 3) {
                 return chek_j;
             }
         }
@@ -143,7 +140,5 @@ public class TicTacToe extends JComponent {
             return -1;
         }
     }
-
-
 }
 
