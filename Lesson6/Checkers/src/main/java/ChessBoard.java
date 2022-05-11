@@ -53,8 +53,7 @@ public class ChessBoard extends JComponent {
         drawGrid(graphics);
         drawCheck(graphics);
         drawMark(graphics);
-        delMark();
-        repaint();
+//        repaint();//нельзя тут repaint! т.к он постоянно будет перерисовывать циклично.
     }
 
     void drawWhiteCheck(int i, int j, Graphics graphics) {
@@ -92,21 +91,11 @@ public class ChessBoard extends JComponent {
         }
     }
 
-    void delMark() {
-        int Marked = 0;
-        int temp_i = 0;
-        int temp_j = 0;
+    void delMark(int markedI, int markedJ) {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                if (field[i][j].IsMarked) {
-                    if (Marked == 0) {
-                        temp_i = i;
-                        temp_j = j;
-                        Marked++;
-                    } else {
-                        Marked--;
-                        field[temp_i][temp_j].IsMarked = false;
-                    }
+                if (i != markedI || j != markedJ && field[i][j].IsMarked) {
+                    field[i][j].IsMarked = false;
                 }
             }
         }
@@ -126,12 +115,13 @@ public class ChessBoard extends JComponent {
     public void processMouseEvent(MouseEvent mouseEvent) {
         super.processMouseEvent(mouseEvent);
         if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
-            int x = mouseEvent.getX();
-            int y = mouseEvent.getY();
+            int x = mouseEvent.getY();
+            int y = mouseEvent.getX();
             int i = (int) ((float) x / 720 * SIZE);
             int j = (int) ((float) y / 720 * SIZE);
             field[i][j].IsMarked = true;
-
+            delMark(i, j);
+            repaint();
         }
     }
 
@@ -140,7 +130,7 @@ public class ChessBoard extends JComponent {
         Graphics2D graphics2D = (Graphics2D) graphics;
         graphics2D.setStroke(new BasicStroke(3));
         graphics2D.setColor(Color.YELLOW);
-        Shape rect = new Rectangle(i, j, 90, 90);
+        Shape rect = new Rectangle(j, i, 90, 90);
         graphics2D.draw(rect);
     }
 
