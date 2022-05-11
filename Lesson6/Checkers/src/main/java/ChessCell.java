@@ -1,10 +1,21 @@
 import javax.swing.*;
 
+//1 - черная шашка
+//2 - белая шашка
+//0 - пустая клетка
+
 public class ChessCell extends JComponent {
-  public static Object name;
-  private int color;
-  private boolean IsChecker;
-  private int WhatColorChecker;
-  private boolean IsQueen;
+
+    public int Checker;
+    public boolean IsQueen;
+    public boolean IsMarked = false;
+
+    public boolean isMarked() {
+        return IsMarked;
+    }
+
+    public void сhangeChecker(int color) {
+        this.Checker = color;
+    }
 }
 

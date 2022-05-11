@@ -11,23 +11,39 @@ public class ChessBoard extends JComponent {
 
     public ChessBoard() {
         enableEvents(AWTEvent.MOUSE_EVENT_MASK);
-        ChessCell[][] field = new ChessCell[SIZE][SIZE];
+        this.field = new ChessCell[8][8];
         initGame();
+        InCellCheker();
     }
 
     public void initGame() {
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field.length; j++) {
-                if (i % 2 == 0 && j % 2 != 0) {
-                    field[i][j] = new ChessCell();
-                } else if (i % 2 != 0 && j % 2 == 0) {
-
-                } else {
-
-                }
-                System.out.println();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                field[i][j] = new ChessCell();
             }
-            WhoSturn = true;
+        }
+        WhoSturn = true;
+    }
+
+    public void InCellCheker() {
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (i % 2 == 0 && j % 2 != 0) {
+                    field[i][j].сhangeChecker(1);
+                } else if (i % 2 != 0 && j % 2 == 0) {
+                    field[i][j].сhangeChecker(1);
+                }
+            }
+        }
+        for (int i = 7; i > 4; i--) {
+            for (int j = 0; j < 8; j++) {
+                if (i % 2 == 0 && j % 2 != 0) {
+                    field[i][j].сhangeChecker(2);
+                } else if (i % 2 != 0 && j % 2 == 0) {
+                    field[i][j].сhangeChecker(2);
+                }
+            }
         }
     }
 
@@ -36,6 +52,9 @@ public class ChessBoard extends JComponent {
         graphics.clearRect(0, 0, getWidth(), getHeight());
         drawGrid(graphics);
         drawCheck(graphics);
+        drawMark(graphics);
+        delMark();
+        repaint();
     }
 
     void drawWhiteCheck(int i, int j, Graphics graphics) {
@@ -59,23 +78,50 @@ public class ChessBoard extends JComponent {
     void drawCheck(Graphics graphics) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < field.length; j++) {
-                if (i % 2 == 0 && j % 2 != 0) {
-                    drawBlackCheck(i, j, graphics);
-                } else if (i % 2 != 0 && j % 2 == 0) {
+                if (field[i][j].Checker == 1) {
                     drawBlackCheck(i, j, graphics);
                 }
             }
         }
-        for (int i = field.length; i > 4; i--) {
+        for (int i = 7; i > 4; i--) {
             for (int j = 0; j < field.length; j++) {
-                if (i % 2 == 0 && j % 2 != 0) {
-                    drawWhiteCheck(i, j, graphics);
-                } else if (i % 2 != 0 && j % 2 == 0) {
+                if (field[i][j].Checker == 2) {
                     drawWhiteCheck(i, j, graphics);
                 }
             }
         }
     }
+
+    void delMark() {
+        int Marked = 0;
+        int temp_i = 0;
+        int temp_j = 0;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (field[i][j].IsMarked) {
+                    if (Marked == 0) {
+                        temp_i = i;
+                        temp_j = j;
+                        Marked++;
+                    } else {
+                        Marked--;
+                        field[temp_i][temp_j].IsMarked = false;
+                    }
+                }
+            }
+        }
+    }
+
+    void drawMark(Graphics graphics) {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (field[i][j].IsMarked) {
+                    drawSquare(graphics, i * 90, j * 90);
+                }
+            }
+        }
+    }
+
 
     public void processMouseEvent(MouseEvent mouseEvent) {
         super.processMouseEvent(mouseEvent);
@@ -84,6 +130,8 @@ public class ChessBoard extends JComponent {
             int y = mouseEvent.getY();
             int i = (int) ((float) x / 720 * SIZE);
             int j = (int) ((float) y / 720 * SIZE);
+            field[i][j].IsMarked = true;
+
         }
     }
 
@@ -95,6 +143,7 @@ public class ChessBoard extends JComponent {
         Shape rect = new Rectangle(i, j, 90, 90);
         graphics2D.draw(rect);
     }
+
 
     void drawGrid(Graphics graphics) {
         int w = 720;
