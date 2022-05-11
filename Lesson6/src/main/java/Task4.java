@@ -7,12 +7,12 @@ public class Task4 {
         Scanner in = new Scanner(System.in);
         System.out.println("input number of string");
         int num = in.nextInt();
-        BigInteger[][] string = new BigInteger[num][num];
+        BigInteger[] string = new BigInteger[num];
         for (int k = 0; k < num; k++) {
-            string[num - 1][k] = getFactorial(num - 1).divide((getFactorial(k).multiply(getFactorial(((num - 1) - k)))));
+            string[k] = getFactorial(num - 1).divide((getFactorial(k).multiply(getFactorial(((num - 1) - k)))));
         }
-        for (int j = 0; j < num; j++) {
-            System.out.print(string[num - 1][j] + " ");
+        for (int i = 0; i < num; i++) {
+            System.out.print(string[i] + " ");
         }
     }
 

@@ -9,6 +9,12 @@ public class TicTacToe extends JComponent {
     int[][] field;
     boolean isXturn;
 
+    public TicTacToe() {
+        enableEvents(AWTEvent.MOUSE_EVENT_MASK);
+        field = new int[3][3];
+        initGame();
+    }
+
     void drawGrid(Graphics graphics) {
         int w = getWidth();
         int h = getHeight();
@@ -59,11 +65,6 @@ public class TicTacToe extends JComponent {
         drawX0(graphics);
     }
 
-    public TicTacToe() {
-        enableEvents(AWTEvent.MOUSE_EVENT_MASK);
-        field = new int[3][3];
-        initGame();
-    }
 
     public void initGame() {
         for (int i = 0; i < field.length; i++) {
