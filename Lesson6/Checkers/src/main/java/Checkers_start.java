@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 //написать игру шашки
-public class Task8 {
+public class Checkers_start {
     public static void main(String[] args) {
         JFrame window = new JFrame("Checkers");//создаем окно
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//добавляем кнопку закрытия
