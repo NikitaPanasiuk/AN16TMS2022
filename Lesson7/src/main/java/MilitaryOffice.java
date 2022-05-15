@@ -1,46 +1,45 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.Objects;
 
 public class MilitaryOffice {
 
-    static Person[] personRegistry;
+    Person[] personRegistry;
 
     MilitaryOffice(Person[] personRegistry) {
-        MilitaryOffice.personRegistry = personRegistry;
+        this.personRegistry = personRegistry;
     }
 
-    public static void showAllFitForMilitaryService() {
-        for (int i = 0; i < personRegistry.length; i++) {
-            if (Person.age >= 18 && Person.age < 27 && Person.male == "man") {
-                System.out.println(Person.name);
+    public void showAllFitForMilitaryService() {
+        for (Person person : personRegistry) {
+            if (person.getAge() >= 18 && person.getAge() < 27 && Objects.equals(person.getMale(), "man")) {
+                System.out.println(person.getName());
             }
         }
     }
 
-    public static void showAlexanderFitForMilitaryService() {
+    public void showAlexanderFitForMilitaryService() {
         int number = 0;
-        for (int i = 0; i < personRegistry.length; i++) {
-            if (Person.age >= 18 && personRegistry[i].age < 27 && Person.name == "Alexander" && Person.male == "man") {
+        for (Person person : personRegistry) {
+            if (person.getAge() >= 18 && person.getAge() < 27 && Objects.equals(person.getName(), "Alexander") && Objects.equals(person.getMale(), "man")) {
                 number++;
             }
         }
         System.out.println("num of recruits named Alexander is " + number);
     }
 
-    public static void showFitForMilitaryServiceWithAge25_27() {
+    public void showFitForMilitaryServiceWithAge25_27() {
         int number = 0;
-        for (int i = 0; i < personRegistry.length; i++) {
-            if (Person.age >= 25 && Person.age < 27 && Person.male == "man") {
+        for (Person person : personRegistry) {
+            if (person.getAge() >= 25 && person.getAge() < 27 && Objects.equals(person.getMale(), "man")) {
                 number++;
             }
         }
         System.out.println("num of recruit with age from 25 to 27 is " + number);
     }
 
-    public static void showMinskFitForMilitaryService() {
+    public void showMinskFitForMilitaryService() {
         int number = 0;
-        for (int i = 0; i < personRegistry.length; i++) {
-            if (Person.age >= 18 && Person.age < 27 && Person.city == "Minsk" && Person.male == "man") {
+        for (Person person : personRegistry) {
+            if (person.getAge() >= 18 && person.getAge() < 27 && Objects.equals(person.getCity(), "Minsk") && Objects.equals(person.getMale(), "man")) {
                 number++;
             }
         }

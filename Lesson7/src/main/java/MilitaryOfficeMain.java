@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class MilitaryOfficeMain {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        System.out.println("Input number of person");
         int n = in.nextInt();
         Person[] personRegister = new Person[n];
         for (int i = 0; i < n; i++) {
@@ -11,21 +12,26 @@ public class MilitaryOfficeMain {
         }
         for (int i = 0; i < n; i++) {
             System.out.println("input age");
-            personRegister[i].age = in.nextInt();
+            int age = in.nextInt();
+            personRegister[i].setAge(age);
             System.out.println("input city");
-            personRegister[i].city = in.next();
+            String city = in.next();
+            personRegister[i].setCity(city);
             System.out.println("input name");
-            personRegister[i].name = in.next();
+            String name = in.next();
+            personRegister[i].setName(name);
             System.out.println("input country");
-            personRegister[i].country = in.next();
+            String country = in.next();
+            personRegister[i].setCountry(country);
             System.out.println("input male");
-            personRegister[i].male = in.next();
+            String male = in.next();
+            personRegister[i].setMale(male);
         }
         MilitaryOffice office1 = new MilitaryOffice(personRegister);
         office1.showAllFitForMilitaryService();
         office1.showFitForMilitaryServiceWithAge25_27();
         office1.showMinskFitForMilitaryService();
-        office1.showMinskFitForMilitaryService();
+        office1.showAlexanderFitForMilitaryService();
 
     }
 }
