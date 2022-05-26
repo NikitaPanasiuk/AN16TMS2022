@@ -5,16 +5,18 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        showFavorite(Seasons.valueOf(in.next()));
-        for (int i = 0; i < Seasons.values().length; i++) {
-            System.out.println(Seasons.values()[i].info);
-            System.out.println(Seasons.values()[i].aveTemp);
-            System.out.println(getDescription(Seasons.values()[i]));
+        for (int i = 0; i < Season.values().length; i++) {
+            System.out.println(Season.values()[i].info);
+            System.out.println(Season.values()[i].aveTemp);
+            System.out.println(getDescription(Season.values()[i]));
         }
+        String favorite = in.next();
+        System.out.println("input you favorite season");
+        Season.showFavorite(Season.valueOf(favorite));
 
     }
 
-    enum Seasons {
+    enum Season {
         SUMMER(28, "Summer is good and hot"),
         AUTUMN(15, "Autumn is good and beautiful"),
         WINTER(-4, "Winter is good and cold"),
@@ -22,23 +24,20 @@ public class Main {
         private final int aveTemp;
         private final String info;
 
-        Seasons(int aveTemp, String info) {
+        Season(int aveTemp, String info) {
             this.aveTemp = aveTemp;
             this.info = info;
+
+        }
+
+        public static void showFavorite(Season favorite) {
+            System.out.println("i love" + favorite.info);
         }
     }
 
-    public static void showFavorite(Seasons favorite) {
-        switch (favorite) {
-            case SUMMER -> System.out.println("I love summer " + Seasons.SUMMER.info);
-            case AUTUMN -> System.out.println("I love autumn " + Seasons.AUTUMN.info);
-            case WINTER -> System.out.println("I love winter " + Seasons.WINTER.info);
-            case SPRING -> System.out.println("I love spring " + Seasons.SPRING.info);
-        }
-    }
 
-    public static String getDescription(Seasons seasons) {
-        if (seasons == Seasons.SUMMER) {
+    public static String getDescription(Season seasons) {
+        if (seasons == Season.SUMMER) {
             return "Hot season";
         }
         return "Cold season";

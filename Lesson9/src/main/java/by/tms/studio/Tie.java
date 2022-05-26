@@ -7,6 +7,7 @@ public class Tie extends Dress implements MenDress {
 
     @Override
     public void dressUpMen() {
+        System.out.println("Man tie, color is = " + getColor() + ", europe size is = " + getSize() + ", price is = " + getCost());
 
     }
 }
