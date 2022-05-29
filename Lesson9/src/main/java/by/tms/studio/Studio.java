@@ -4,6 +4,7 @@ public class Studio {
     public Dress[] dress;
 
     public Studio(Dress[] dress) {
+        this.dress = dress;
     }
 
 
