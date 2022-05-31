@@ -1,19 +1,25 @@
 package by.tms.square;
 
+import lombok.Getter;
 
-public class Triangle extends Figure {
-    public Triangle(Type type) {
-        super(type);
+
+public class Triangle extends Figure implements SquareAware {
+    private final int high;
+    private final int base;
+
+    public Triangle(int high, int base) {
+        this.high = high;
+        this.base = base;
     }
 
     @Override
     Type getType() {
-        return null;
+        return Type.TRIANGLE;
     }
 
-    public void findSquare() {
-        double p = (double) (Type.TRIANGLE.trainFirstSide + Type.TRIANGLE.trainSecSide + Type.TRIANGLE.trainThirdSide) / 2;
-        double sq = Math.sqrt(p * (p - Type.TRIANGLE.trainFirstSide) * (p - Type.TRIANGLE.trainSecSide) * (p - Type.TRIANGLE.trainThirdSide));
-        System.out.println("Square of triangle is " + sq);
+
+    @Override
+    public double getSquare() {
+        return high * base * 0.5;
     }
 }
