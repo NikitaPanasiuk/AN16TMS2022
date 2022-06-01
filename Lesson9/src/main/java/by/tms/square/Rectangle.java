@@ -1,17 +1,21 @@
 package by.tms.square;
 
-public class Rectangle extends Figure {
-    public Rectangle(Type type) {
-        super(type);
+public class Rectangle extends Figure implements SquareAware {
+    private final int firstSide;
+    private final int secSide;
+
+    public Rectangle(int firstSide, int secSide) {
+        this.firstSide = firstSide;
+        this.secSide = secSide;
     }
 
     @Override
     Type getType() {
-        return null;
+        return Type.RECTANGLE;
     }
 
-    public void findSquare() {
-        double sq = Type.RECTANGLE.recFirstSide * Type.RECTANGLE.recSecSide;
-        System.out.println("Square of rectangle is " + sq);
+    @Override
+    public double getSquare() {
+        return firstSide * secSide;
     }
 }

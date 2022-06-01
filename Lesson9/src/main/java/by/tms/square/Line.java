@@ -1,16 +1,18 @@
 package by.tms.square;
 
+import lombok.Getter;
+
+@Getter
 public class Line extends Figure {
-    public Line(Type type) {
-        super(type);
+    private final int length;
+
+    public Line(int length) {
+        this.length = length;
     }
 
     @Override
     Type getType() {
-        return null;
+        return Type.LINE;
     }
 
-    public void findSquare() {
-        System.out.println("Square can't be find, length of line is ");
-    }
 }
