@@ -1,17 +1,23 @@
 package by.tms.task1;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.*;
 import java.util.ArrayList;
+
 
 public class Main1 {
     public static void main(String[] args) throws IOException {
         File file = new File("C:\\TechMeSkill\\Java\\Task\\AN16TMS2022\\Lesson12\\src\\main\\java\\by\\tms\\task1\\input.txt");
-        //создаем объект FileReader для объекта File
+
+        //Г±Г®Г§Г¤Г ГҐГ¬ Г®ГЎГєГҐГЄГІ FileReader Г¤Г«Гї Г®ГЎГєГҐГЄГІГ  File
         FileReader fr = new FileReader(file);
         FileWriter fw = new FileWriter("C:\\TechMeSkill\\Java\\Task\\AN16TMS2022\\Lesson12\\src\\main\\java\\by\\tms\\task1\\output.txt");
-        //создаем BufferedReader с существующего FileReader для построчного считывания
+        //Г±Г®Г§Г¤Г ГҐГ¬ BufferedReader Г± Г±ГіГ№ГҐГ±ГІГўГіГѕГ№ГҐГЈГ® FileReader Г¤Г«Гї ГЇГ®Г±ГІГ°Г®Г·Г­Г®ГЈГ® Г±Г·ГЁГІГ»ГўГ Г­ГЁГї
         BufferedReader reader = new BufferedReader(fr);
-        // считаем сначала первую строку
+        // Г±Г·ГЁГІГ ГҐГ¬ Г±Г­Г Г·Г Г«Г  ГЇГҐГ°ГўГіГѕ Г±ГІГ°Г®ГЄГі
         String line = reader.readLine();
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(line);
@@ -36,4 +42,5 @@ public class Main1 {
     }
 
 }
+
 
