@@ -14,10 +14,11 @@ public class Main1 {
 
         //ñîçäàåì îáúåêò FileReader äëÿ îáúåêòà File
         FileReader fr = new FileReader(file);
-        FileWriter fw = new FileWriter("C:\\TechMeSkill\\Java\\Task\\AN16TMS2022\\Lesson12\\src\\main\\java\\by\\tms\\task1\\output.txt");
-        //ñîçäàåì BufferedReader ñ ñóùåñòâóþùåãî FileReader äëÿ ïîñòðî÷íîãî ñ÷èòûâàíèÿ
+
+        //������� BufferedReader � ������������� FileReader ��� ����������� ����������
         BufferedReader reader = new BufferedReader(fr);
-        // ñ÷èòàåì ñíà÷àëà ïåðâóþ ñòðîêó
+        FileWriter fw = new FileWriter("C:\\TechMeSkill\\Java\\Task\\AN16TMS2022\\Lesson12\\src\\main\\java\\by\\tms\\task1\\output.txt", true);
+        // ������� ������� ������ ������
         String line = reader.readLine();
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(line);

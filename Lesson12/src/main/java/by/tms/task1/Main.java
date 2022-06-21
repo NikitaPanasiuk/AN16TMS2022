@@ -9,11 +9,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         StringBuilder s = new StringBuilder();
         FileWriter fr = new FileWriter("C:\\TechMeSkill\\Java\\Task\\AN16TMS2022\\Lesson12\\src\\main\\java\\by\\tms\\task1\\output.txt");
-        Scanner in = new Scanner(new File("C:\\TechMeSkill\\Java\\Task\\AN16TMS2022\\Lesson12\\src\\main\\java\\by\\tms\\task1\\input.txt"));
+        Scanner in = new Scanner(new File("C:\\TechMeSkill\\Java\\Task\\AN16TMS2022\\Lesson12\\src\\main\\java\\by\\tms\\task1\\input.txt.txt"));
         while (in.hasNext())
             s.append(in.nextLine());
         // ------------------------------------
-        String[] a = s.toString().split("\\n"); //!!!!
+        String[] a = s.toString().split("\\s"); //!!!!
 
         for (String str : a) {
             if (isPalindrome(str)) {
