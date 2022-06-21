@@ -8,9 +8,9 @@ public class Main1 {
         File file = new File("C:\\TechMeSkill\\Java\\Task\\AN16TMS2022\\Lesson12\\src\\main\\java\\by\\tms\\task1\\input.txt");
         //создаем объект FileReader для объекта File
         FileReader fr = new FileReader(file);
-        FileWriter fw = new FileWriter("C:\\TechMeSkill\\Java\\Task\\AN16TMS2022\\Lesson12\\src\\main\\java\\by\\tms\\task1\\output.txt");
         //создаем BufferedReader с существующего FileReader для построчного считывания
         BufferedReader reader = new BufferedReader(fr);
+        FileWriter fw = new FileWriter("C:\\TechMeSkill\\Java\\Task\\AN16TMS2022\\Lesson12\\src\\main\\java\\by\\tms\\task1\\output.txt", true);
         // считаем сначала первую строку
         String line = reader.readLine();
         ArrayList<String> arrayList = new ArrayList<>();
