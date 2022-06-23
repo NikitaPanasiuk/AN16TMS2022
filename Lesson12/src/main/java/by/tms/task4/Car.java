@@ -1,6 +1,8 @@
 package by.tms.task4;
 
-public class Car {
+import java.io.Serializable;
+
+public class Car implements Serializable {
     final private Engine engene;
     final private GasTank gasTank;
     final private String name;
@@ -15,4 +17,8 @@ public class Car {
         this.cost = cost;
     }
 
+    @Override
+    public String toString() {
+        return engene.getEngineType() + gasTank.getFuelType() + gasTank.getVolume() + name + speed + cost;
+    }
 }
